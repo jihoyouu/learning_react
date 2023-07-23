@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <title>React! React! React!</title>
+    <!-- 이 방법은 개발환경에 소요시간을 줄이고 코드 작성에 시간을 투자하는 간단한 리액트 앱 구성방식이다. -->
+    <!-- 핵심 리액트 라이브러리 및 DOM 작업할 때 필요한 다양한 기능 추가 -->
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <!-- 바벨은 JSX를 자바스크립트로 변환하는 기능을 한다. -->
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+
+<body>
+    <script type="text/babel"> // type 속성을 지정해야 바벨이 기능함
+        ReactDOM.render(
+            <h1>Hello World!</h1>,
+            document.body
+        );
+    </script>
+</body>
+</html>
