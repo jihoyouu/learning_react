@@ -29,7 +29,12 @@
 
     <script type="text/babel"> // type 속성을 지정해야 바벨이 기능함
         ReactDOM.render( // render 메소드는 2개의 인자를 받는다. 
-            <h1>Hello World!</h1>, // 1번 인자 : 화면에 출력하고 싶은 HTML(즉, JSX)
+            <div> 
+                <h3><i>Batman</i></h3> 
+                <h3><i>Iron Man</i></h3>
+                <h3><i>Nicolas Cage</i></h3>
+                <h3><i>Mega Man</i></h3>
+            </div>, // 1번 인자 : 화면에 출력하고 싶은 HTML(즉, JSX) -> 컴포넌트를 사용하지 않는 것은 
             // document.body // 2번 인자 : 그 JSX를 렌더링해 보여줄 DOM 안의 위치 -> JS를 이용해 body 엘리먼트에 바로 입력하는것은 좋은 방식이 아니다.
             document.querySelector("#container")
         );
