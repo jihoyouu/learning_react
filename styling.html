@@ -13,16 +13,7 @@
             background-color: #fff;
         }
 
-        .letter {
-            padding: 10px;
-            margin: 10px;
-            background-color: #FFDE00;
-            color: #333;
-            display: inline-block;
-            font-family: monospace;
-            font-size: 32px;
-            text-align: center;
-        }
+        
     </style>
 </head>
 
@@ -33,8 +24,22 @@
 
         class Letter extends React.Component {
             render() {
+                // 스타일 객체 생성
+                var letterStyle = {
+                    padding: 10,
+                    margin: 10,
+                    backgroundColor: this.props.bgcolor,
+                    color: "#333",
+                    display: "inline-block",
+                    fontFamily: "monospace",
+                    fontSize: 32,
+                    textAlign: "center",
+                }
+
                 return(
-                    <div className="letter">
+                    // 스타일링 대상 - 스타일링 객체 지정 방법은 대상 태그에 style={스타일링 객체명} 형태로 작성한다.
+                    // 대신 이 방식은 태그에 직접 css를 적용하여 그대로 노출되는 방식이다.
+                    <div style={letterStyle}>
                         {this.props.children}
                     </div>
                 )
@@ -43,11 +48,11 @@
 
         ReactDOM.render(
             <div>
-                <Letter>A</Letter>
-                <Letter>E</Letter>
-                <Letter>I</Letter>
-                <Letter>O</Letter>
-                <Letter>U</Letter>
+                <Letter bgcolor="#58B3FF">A</Letter>
+                <Letter bgcolor="#FF605F">E</Letter>
+                <Letter bgcolor="#FFD52E">I</Letter>
+                <Letter bgcolor="#49DD8E">O</Letter>
+                <Letter bgcolor="#AE99FF">U</Letter>
             </div>,
             destination
         );
