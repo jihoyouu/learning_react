@@ -19,9 +19,61 @@
     <div id="container"></div>
 
     <script type="text/babel">
+        // 하위 컴포넌트 중 하나로 색상을 보여줄 컴포넌트
+        class Square extends React.Component {
+            render() {
+                var squareStyle = {
+                    height: 150,
+                    backgroundColor: "#FF6663"
+                };
+                return(
+                    <div style={squareStyle}>
+
+                    </div>
+                );
+            }
+        }
+
+        // 하위 컴포넌트 중 하나로 색상코드 문자열을 보여줄 컴포넌트
+        class Label extends React.Component {
+            render() {
+                var labelStyle = {
+                    fontFamily: "sans-serif",
+                    fontWeight: "bold",
+                    padding: 13,
+                    margin: 0
+                };
+
+                return(
+                    <p style={labelStyle}>#FF6663</p>
+                );
+            }
+        }
+
+        // 최상위 컴포넌트
+        class Card extends React.Component {
+            render() {
+                var cardStyle = {
+                    height: 200,
+                    width: 150,
+                    padding: 0,
+                    backgroundColor: "#FFF",
+                    boxShadow: "0px 0px 5px #666"
+                };
+
+                return(
+                    // 하위 컴포넌트인 Square, Label을 호출해서 사용한다.(ReactDOM.render에서 사용하지 않는다)
+                    <div style={cardStyle}>
+                        <Square/>
+                        <Label/>
+                    </div>
+                );
+            }
+        }
+
         ReactDOM.render(
             <div>
-                
+                <Card/>
             </div>,
             document.querySelector("#container")
         );
