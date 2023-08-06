@@ -24,7 +24,7 @@
             render() {
                 var squareStyle = {
                     height: 150,
-                    backgroundColor: "#FF6663"
+                    backgroundColor: this.props.color // 컬러코드 속성값을 변수로 받음
                 };
                 return(
                     <div style={squareStyle}>
@@ -45,7 +45,7 @@
                 };
 
                 return(
-                    <p style={labelStyle}>#FF6663</p>
+                    <p style={labelStyle}>{this.props.color}</p> // 컬러코드 속성값을 변수로 받음
                 );
             }
         }
@@ -63,17 +63,19 @@
 
                 return(
                     // 하위 컴포넌트인 Square, Label을 호출해서 사용한다.(ReactDOM.render에서 사용하지 않는다)
+                    // 컬러코드 속성 전달을 위해 수정
                     <div style={cardStyle}>
-                        <Square/>
-                        <Label/>
+                        <Square color={this.props.color} />
+                        <Label color={this.props.color} />
                     </div>
                 );
             }
         }
 
         ReactDOM.render(
+            // 하드코딩된 컬러코드를 부모컴포넌트에서 하위컴포넌트로 일일이 전달한다.
             <div>
-                <Card/>
+                <Card color="#FFA737"/>
             </div>,
             document.querySelector("#container")
         );
