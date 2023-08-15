@@ -13,9 +13,31 @@
 
     <script type="text/babel">
         class LightningCounter extends React.Component {
+            // 컴포넌트가 렌더링되기 전에 state 객체를 먼저 실행하기 위해 render 메소드보다 앞에 작성한다.
+            constructor(props) {
+                super(props);
+                
+                this.state = {
+                    strikes: 0
+                };
+                // 컨텍스트가 유지되지 않으므로 timerTick 함수를 명시적으로 바인딩시킴
+                this.timerTick = this.timerTick.bind(this);
+            }
+            
+            timerTick() {
+                // state 객체로 병합시키기 원하는 모든 속성을 넣을 수 있음
+                this.setState({
+                    strikes: this.state.strikes + 100
+                });
+            }
+
+            componentDidMount() {
+                setInterval(this.timerTick, 1000); // setInterval 함수를 사용해 strike 속성을 매초 100씩 증가시킬 것이다
+            }
+
             render() {
                 return (
-                    <h1>Hello!</h1>
+                    <h1>{this.state.strikes}</h1> // setState를 통해 state 객체의 strikes 값이 변경될 때마다 자동으로 호출된다
                 );
             }
         }
