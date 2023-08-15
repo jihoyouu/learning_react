@@ -31,11 +31,35 @@
             }
         }
 
+        var theCircle = <Circle bgColor="#F9C240" />;
+        var destination = document.querySelector("#container");
+
+        // 함수 사용해서 색상 데이터를 랜덤으로 표시
+        function showCircle() {
+            var colors = ["#393E41", "#E94F37", "#1C89BF", "#A1D363", "#85FFC7", "#297373", "#FF8552", "#A40E4C"];
+            var rand = Math.floor(Math.random() * colors.length);
+
+            // 무작위로 선택된 컬러의 Circle을 리턴
+            return <Circle bgColor={colors[rand]} />;
+        }
+
+        // 여러 컴포넌트를 보여줄 때 수작업으로 하지 않고, 배열을 사용해서 표현하기
+        var colors = ["#393E41", "#E94F37", "#1C89BF", "#A1D363", "#85FFC7", "#297373", "#FF8552", "#A40E4C"];
+        var renderData = [];
+        for (var i=0; i < colors.length; i++) {
+            // renderData.push(<Circle bgColor={colors[i]} />);
+            // 동적으로 엘리먼트를 만들 때는 자동으로 식별자가 부여되지 않으므로, 각 컴포넌트를 유일하게 식별할 수 있는 key 속성을 추가해야한다.
+            var color = colors[i];
+            renderData.push(<Circle key={i + color} bgColor={color} />);
+        }
+
         ReactDOM.render(
             <div>
-                <Circle bgColor="#F9C240" />
+                {theCircle}
+                {showCircle()}
+                {renderData}
             </div>,
-            document.querySelector("#container")
+            destination
         );
     </script>
 </body>
