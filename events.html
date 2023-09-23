@@ -41,6 +41,23 @@
                 this.state = {
                     count: 0
                 };
+                
+                this.increase = this.increase.bind(this); // this를 increase 함수에 바인딩
+            }
+            // increase 이벤트 핸들러 구현
+            increase(e) { // 이벤트 인자를 e로 지정
+                var currentCount = this.state.count;
+
+                if (e.shiftKey) {
+                    currentCount += 10;
+                } else {
+                    currentCount += 1;
+                }
+
+                this.setState({
+                    // count: this.state.count + 1
+                    count: currentCount
+                });
             }
 
             render() {
@@ -63,10 +80,10 @@
                     lineHeight: "3px"
                 };
 
-                return (
+                return ( // increase 이벤트 핸들러 추가
                     <div style={backgroundStyle}>
                         <Counter display={this.state.count} />
-                        <button style={buttonStyle}>+</button>
+                        <button onClick={this.increase} style={buttonStyle}>+</button>
                     </div>
                 );
             }
